@@ -3,18 +3,23 @@ layout: default
 title: 理解Python中的元类(metaclass)
 ---
 
+
 ## {{ page.title }}
 
+
 ### 类也是对象
+
 ```
 class Foo(object):
     pass
 ```
 运行这段代码实际上会在内存中创建一个名为Foo的对象，和普通的对象并没有本质的区别。
 
+
 ### 动态创建类
 type除了可以返回对象的类型外还可以用于动态创建类。
 type(类名,父类的元组,包含的属性字典)
+
 ```
 class Foo(object):
     pass
@@ -32,6 +37,7 @@ FooChild = type('FooChild', (Foo,), {})
 ### 元类
 元类就是用来创建类的东西, type实际上就是一个元类。
 
+
 #### __class__属性
 ```
 class Foo(object): pass
@@ -41,6 +47,8 @@ print f.__class__
 print f.__class__.__class__
 # <type 'type'>
 ```
+
+
 #### __metaclass__属性
 ```
 class Foo(object):
@@ -54,6 +62,7 @@ class Foo(Bar):
 ```
 先查找Foo的定义中是否有__metaclass__，如果没有会去父类中寻找，如果都没有会尝试在模块层次中寻找，如果还是找不到，就用type来创建。
 
+
 #### 自定义元类
 元类的主要目的就是为了在创建类时可以改变类。通常会在设计API时做这样的事情。
 一个典型的例子是Django ORM。它允许像下面这样定义：
@@ -66,6 +75,7 @@ guy = Person(name='bob', age='35')
 print guy.age
 ```
 实际上guy.age并不是返回一个IntegerField，而是返回一个int。
+
 
 ### 结语
 还有其他两种技术来修改类
