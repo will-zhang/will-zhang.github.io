@@ -66,6 +66,7 @@ class Foo(Bar):
 #### 自定义元类
 元类的主要目的就是为了在创建类时可以改变类。通常会在设计API时做这样的事情。
 一个典型的例子是Django ORM。它允许像下面这样定义：
+
 ```
 class Person(models.Model):
     name = models.CharField(max_length=30)
@@ -74,6 +75,7 @@ class Person(models.Model):
 guy = Person(name='bob', age='35')
 print guy.age
 ```
+
 实际上guy.age并不是返回一个IntegerField，而是返回一个int。
 
 
