@@ -79,7 +79,9 @@ print guy.age
 
 ### 结语
 还有其他两种技术来修改类
+
 1. Monkey patching
 2. class decorators
+
 当你需要动态修改类时，99%的时间最好使用上面两种技术。但是，在99%的时间根部就不需要动态修改类!
 
